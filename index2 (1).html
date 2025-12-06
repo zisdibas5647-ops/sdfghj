@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Мини-викторина</h1>
+    <p id="question"></p>
+    <input id="answer" type="text" placeholder="Ваш ответ">
+    <button onclick="next()">Ответить</button>
+    <p id="result"></p>
+    <script>
+        let questions = [
+            "Сколько будет 5 * 3?",
+            "Столица России?",
+            "HTML&CSS - это язык программирования?"
+        ]
+        let answers = [
+            "15",
+            "Москва",
+            "Нет" 
+        ]
+        let current = 0;
+        let score = 0;
+        document.getElementById("question").textContent = questions[current];
+        function next(){
+            let userAnswer = document.getElementById("answer").value;
+            if (userAnswer.trim().toLowerCase() === answers[current].toLowerCase()){
+                score++
+            }
+            current++;
+            if(current >= questions.lenght){
+                document.getElementById("question").textContent = "Викторина закончена";
+                document.getElementById("result").textContent = "Ваш результат: " + score;
+                document.getElementById("answer").style.display = "none";
+                return;
+            }
+            document.getElementById("question").textContent = questions[current];
+            document.getElementById("answer").value = "";
+        }
+        // let fruits = [1, "apple", "banana", true, false];
+        // console.log(fruits);
+        // console.log(fruits[1]);
+        // fruits.push("orange");
+        // console.log(fruits);
+        // fruits.shift();
+        // console.log(fruits);
+        // let cities = [
+        //     "Moscow",
+        //     "Yakutsk",
+        //     2
+        // ];
+        // console.log(cities)
+        
+    </script>
+</body>
+</html>
